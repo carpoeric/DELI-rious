@@ -41,7 +41,7 @@ public class SignatureSandwiches
         phillyChesse.vegetableToppings.add("Peppers");
         phillyChesse.sauceToppings.add("Mayo");
         phillyChesse.setSandwichPrice(11);
-        phillyChesse.setDescription(" The Philly ($11) - The closest thing to a Super Bowl win for an Eagles fan. 8 inch classic toasted steak sandwich topped with american, peppers, and mayo.");
+        phillyChesse.setDescription(" The Philly ($11) - The closest feeling to a Super Bowl win for an Eagles fan. 8 inch classic toasted steak sandwich topped with american, peppers, and mayo.");
         signatureSandwiches.add(phillyChesse);
     }
 
