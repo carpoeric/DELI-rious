@@ -23,18 +23,17 @@ class OrderScreen
 
     public void run() throws IOException
     {
-        System.out.println("What are we feelin' today?");
+        System.out.println(Colors.BRIGHT_YELLOW + "What are we feelin' today?" + Colors.TEXT_RESET);
         while (true)
         {
             Scanner keyboard = new Scanner(System.in);
             System.out.println();
-            System.out.println("Order Options:");
-            System.out.println();
-            System.out.println("[1] Add a sandwich");
+            System.out.println(Colors.YELLOW + "Order Options:" + Colors.TEXT_RESET);
+            System.out.println(Colors.BRIGHT_WHITE + "[1] Add a sandwich");
             System.out.println("[2] Add a drink");
             System.out.println("[3] Add chippies");
             System.out.println("[4] Checkout time!");
-            System.out.println("[0] Actually... Cancel this order.");
+            System.out.println("[0] Actually... Cancel this order." + Colors.TEXT_RESET);
             System.out.println();
             System.out.println("Please enter your selection here: ");
             String choice = keyboard.nextLine();
@@ -43,9 +42,9 @@ class OrderScreen
             {
                 case "1":
                     System.out.println();
-                    System.out.println("What kind of sandwich would you like?");
-                    System.out.println("[1] Give me a SIGNATURE!");
-                    System.out.println("[2] I'll freestyle it. (CUSTOM)");
+                    System.out.println(Colors.YELLOW + "What kind of sandwich would you like?");
+                    System.out.println(Colors.BRIGHT_WHITE + "[1] Give me a SIGNATURE!");
+                    System.out.println("[2] I'll freestyle it. (CUSTOM)" + Colors.TEXT_RESET);
                     System.out.println();
                     System.out.println("Please enter your selection here: ");
                     int order = keyboard.nextInt();
@@ -54,14 +53,14 @@ class OrderScreen
                     if (order == 1)
                     {
                         System.out.println();
-                        System.out.println("Here's a list of our Signature Sandwiches!");
+                        System.out.println(Colors.BRIGHT_GREEN + "Here's a list of our Signature Sandwiches!" + Colors.TEXT_RESET);
                         System.out.println();
                         SignatureSandwiches signatureSandwich = new SignatureSandwiches();
 
                         for (Sandwich sandwich : signatureSandwich.signatureSandwiches)
                         {
 
-                            System.out.println(counter + "." + sandwich.getDescription());
+                            System.out.println(Colors.BRIGHT_WHITE + "[" + counter + "]" + sandwich.getDescription() + Colors.TEXT_RESET);
                             System.out.println();
                             counter++;
                         }
@@ -100,25 +99,25 @@ class OrderScreen
                     else
                     {
                         System.out.println();
-                        System.out.println("We currently offer sandwich sizes in: ");
-                        System.out.println("[4] 4 Inches");
+                        System.out.println(Colors.YELLOW + "We currently offer sandwich sizes in: " + Colors.TEXT_RESET);
+                        System.out.println(Colors.BRIGHT_WHITE + "[4] 4 Inches");
                         System.out.println("[8] 8 Inches");
-                        System.out.println("[12] 12 Inches");
+                        System.out.println("[12] 12 Inches" + Colors.TEXT_RESET);
                         System.out.println();
                         System.out.println("What sandwich size would you like? Please enter your selection here (Just the number!): ");
                         int size = keyboard.nextInt();
                         keyboard.nextLine();
 
-                        System.out.println("We currently offer these choices of bread: ");
-                        System.out.println("[White]");
+                        System.out.println(Colors.YELLOW + "We currently offer these choices of bread: " + Colors.TEXT_RESET);
+                        System.out.println(Colors.BRIGHT_WHITE + "[White]");
                         System.out.println("[Wheat]");
                         System.out.println("[Rye]");
-                        System.out.println("[Wraps]");
+                        System.out.println("[Wraps]" + Colors.TEXT_RESET);
                         System.out.println();
                         System.out.println("What kind of bread would you prefer? Please enter your selection here: ");
                         String bread = keyboard.nextLine().trim();
                         System.out.println();
-                        System.out.println("Do you want your bread nice and toasty? (Yes/No)");
+                        System.out.println(Colors.YELLOW + "Do you want your bread nice and toasty? (Yes/No)" + Colors.TEXT_RESET);
                         System.out.println("Please enter your selection here: ");
                         String option = keyboard.nextLine().trim();
                         boolean bool;
@@ -150,9 +149,9 @@ class OrderScreen
 
                         int customerChoice = 0;
                         System.out.println();
-                        System.out.println("Would you like meat on your sandwich?");
-                        System.out.println("[1] Sure!");
-                        System.out.println("[2] Not interested...");
+                        System.out.println(Colors.YELLOW + "Would you like meat on your sandwich?" + Colors.TEXT_RESET);
+                        System.out.println(Colors.BRIGHT_WHITE + "[1] Sure!");
+                        System.out.println("[2] Not interested..." + Colors.TEXT_RESET);
                         System.out.println();
                         System.out.println("Please enter your selection here: ");
                         customerChoice = keyboard.nextInt();
@@ -191,7 +190,7 @@ class OrderScreen
     private static void printSandwichAndSetPrice()
     {
         System.out.println();
-        System.out.println("Sandwich successfully added!");
+        System.out.println(Colors.BRIGHT_CYAN + "Sandwich successfully added!" + Colors.TEXT_RESET);
         System.out.println();
         createOrder.setSandwichPrices();
     }
@@ -207,12 +206,14 @@ class OrderScreen
                 if (moreMeatToppings <= 7)
                 {
                     System.out.println();
-                    System.out.println("Here's our meat selection...");
-                    System.out.println();
+                    System.out.println(Colors.YELLOW + "Here's our meat selection..." + Colors.TEXT_RESET);
+
                     for (int i = 1; i < meatToppings.size() + 1; i++)
                     {
-                        System.out.println(i + ":" + meatToppings.get(i - 1));
+                        System.out.println(Colors.BRIGHT_WHITE + "[" + i + "] " + meatToppings.get(i - 1) + Colors.TEXT_RESET);
                     }
+                    System.out.println("Please enter your selection here: ");
+
                     moreMeatToppings = keyboard.nextInt();
                     keyboard.nextLine();
                     if (sandwich.meatToppings.size() > 1)
@@ -228,7 +229,7 @@ class OrderScreen
                 if (sandwich.meatToppings.isEmpty())
                 {
 
-                    sandwich.meatToppings.add("~ No Meat ~");
+                    sandwich.meatToppings.add("NO MEAT...");
                 }
                 else
                 {
@@ -243,9 +244,12 @@ class OrderScreen
     private static void customerCheese(Scanner keyboard, List<String> cheeseToppings, Sandwich sandwich)
     {
         int customerChoice2 = 0;
-        System.out.println("Would you like cheese?");
-        System.out.println("[1] Yes");
-        System.out.println("[2] No");
+        System.out.println();
+        System.out.println(Colors.YELLOW + "Would you like cheese?" + Colors.TEXT_RESET);
+        System.out.println(Colors.BRIGHT_WHITE + "[1] Yes");
+        System.out.println("[2] No" + Colors.TEXT_RESET);
+        System.out.println();
+        System.out.println("Please enter your selection here: ");
         customerChoice2 = keyboard.nextInt();
         keyboard.nextLine();
         if (customerChoice2 == 1)
@@ -256,11 +260,14 @@ class OrderScreen
             {
                 if (moreCheeseToppings <= 4)
                 {
-                    System.out.println("Here's our cheese options...");
+                    System.out.println();
+                    System.out.println(Colors.YELLOW + "Here's our cheese options..." + Colors.TEXT_RESET);
                     for (int i = 1; i < cheeseToppings.size() + 1; i++)
                     {
-                        System.out.println(i + ":" + cheeseToppings.get(i - 1));
+                        System.out.println(Colors.BRIGHT_WHITE + "[" + i + "] " + cheeseToppings.get(i - 1) + Colors.TEXT_RESET);
+
                     }
+                    System.out.println("Please enter your selection here: ");
 
                     moreCheeseToppings = keyboard.nextInt();
                     keyboard.nextLine();
@@ -281,6 +288,7 @@ class OrderScreen
                 else
                 {
                     System.out.println(sandwich.cheeseToppings);
+                    System.out.println();
                 }
             }
         }
@@ -289,9 +297,12 @@ class OrderScreen
     private static void customerToppings(Scanner keyboard, List<String> vegToppings, Sandwich sandwich)
     {
         int customerChoice3 = 0;
-        System.out.println("Would you like vegetables on your sandwich?");
-        System.out.println("1: Yes");
-        System.out.println("2: No");
+        System.out.println();
+        System.out.println(Colors.YELLOW + "Would you like vegetables on your sandwich?" + Colors.TEXT_RESET);
+        System.out.println(Colors.BRIGHT_WHITE + "1: Yes");
+        System.out.println("2: No" + Colors.TEXT_RESET);
+        System.out.println();
+        System.out.println("Please enter your selection here: ");
         customerChoice3 = keyboard.nextInt();
         keyboard.nextLine();
         if (customerChoice3 == 1)
@@ -302,11 +313,14 @@ class OrderScreen
             {
                 if (moreVegetableToppings <= 9)
                 {
-                    System.out.println("Here's our veggies...");
+                    System.out.println();
+                    System.out.println(Colors.YELLOW + "Here's our veggies selection..." + Colors.TEXT_RESET);
                     for (int i = 1; i < vegToppings.size() + 1; i++)
                     {
-                        System.out.println(i + ":" + vegToppings.get(i - 1));
+                        System.out.println(Colors.BRIGHT_WHITE + "[" + i + "]" + vegToppings.get(i - 1) + Colors.TEXT_RESET);
                     }
+                    System.out.println("Please enter your selection here: ");
+
                     moreVegetableToppings = keyboard.nextInt();
                     keyboard.nextLine();
                     sandwich.vegetableToppings.add(vegToppings.get(moreVegetableToppings - 1));
@@ -331,9 +345,12 @@ class OrderScreen
     private static void customerSauces(Scanner keyboard, List<String> sauceToppings, Sandwich sandwich)
     {
         int customerChoice4 = 0;
-        System.out.println("Would you like any sauces on your sandwich?");
-        System.out.println("1: Yes");
-        System.out.println("2: No");
+        System.out.println();
+        System.out.println(Colors.YELLOW + "Would you like any sauces on your sandwich?" + Colors.TEXT_RESET);
+        System.out.println(Colors.BRIGHT_WHITE + "[1] Yes");
+        System.out.println("[2] No" + Colors.TEXT_RESET);
+        System.out.println();
+        System.out.println("Please enter your selection here: ");
         customerChoice4 = keyboard.nextInt();
         keyboard.nextLine();
         if (customerChoice4 == 1)
@@ -344,11 +361,13 @@ class OrderScreen
             {
                 if (moreSauceToppings <= 7)
                 {
-                    System.out.println("Here's our sauce options...");
+                    System.out.println();
+                    System.out.println(Colors.YELLOW + "Here's our sauce options..." + Colors.TEXT_RESET);
                     for (int i = 1; i < sauceToppings.size() + 1; i++)
                     {
-                        System.out.println(i + ":" + sauceToppings.get(i - 1));
+                        System.out.println(Colors.BRIGHT_WHITE + "[" + i + "]" + sauceToppings.get(i - 1) + Colors.TEXT_RESET);
                     }
+                    System.out.println("Please enter your selection here: ");
 
                     moreSauceToppings = keyboard.nextInt();
                     keyboard.nextLine();
@@ -360,7 +379,7 @@ class OrderScreen
                 }
                 if (sandwich.sauceToppings.size() < 1)
                 {
-                    sandwich.sauceToppings.add("No sauces");
+                    sandwich.sauceToppings.add("NO SAUCES...");
                 }
                 else
                 {
@@ -373,9 +392,12 @@ class OrderScreen
     private static void customerSide(Scanner keyboard, List<String> sideToppings, Sandwich sandwich)
     {
         int customerChoice5 = 0;
-        System.out.println("Would you like any sides?");
-        System.out.println("[1] Sure!");
-        System.out.println("[2] Not interested...");
+        System.out.println();
+        System.out.println(Colors.YELLOW + "Would you like any sides?" + Colors.TEXT_RESET);
+        System.out.println(Colors.BRIGHT_WHITE + "[1] Sure!");
+        System.out.println("[2] Not interested..." + Colors.TEXT_RESET);
+        System.out.println();
+        System.out.println("Please enter your selection here: ");
         customerChoice5 = keyboard.nextInt();
         keyboard.nextLine();
         if (customerChoice5 == 1)
@@ -386,11 +408,13 @@ class OrderScreen
             {
                 if (moreSideToppings <= 2)
                 {
-                    System.out.println("Here's our sides...");
+                    System.out.println();
+                    System.out.println(Colors.YELLOW + "Here's our sides..." + Colors.TEXT_RESET);
                     for (int i = 1; i < sideToppings.size() + 1; i++)
                     {
-                        System.out.println(i + ":" + sideToppings.get(i - 1));
+                        System.out.println(Colors.BRIGHT_WHITE + "[" + i + "]" + sideToppings.get(i - 1) + Colors.TEXT_RESET);
                     }
+                    System.out.println("Please enter your selection here: ");
 
                     moreSideToppings = keyboard.nextInt();
                     keyboard.nextLine();
@@ -403,6 +427,7 @@ class OrderScreen
                 else
                 {
                     System.out.println(sandwich.sideToppings);
+                    System.out.println();
                 }
             }
         }
@@ -416,11 +441,11 @@ class OrderScreen
     private void addDrink()
     {
         Scanner keyboard = new Scanner(System.in);
-        System.out.println("Please select the size of your drink:");
-        System.out.println("[1] Small");
+        System.out.println(Colors.BRIGHT_GREEN + "Please select the size of your drink:" + Colors.TEXT_RESET);
+        System.out.println(Colors.BRIGHT_WHITE + "[1] Small");
         System.out.println("[2] Medium");
-        System.out.println("[3] Large");
-        System.out.print("Please enter your choice: ");
+        System.out.println("[3] Large" + Colors.TEXT_RESET);
+        System.out.print("Please enter your selection here: ");
 
         String sizeChoice = keyboard.nextLine();
         Map<String, Double> drinkPrices = new HashMap<>();
@@ -431,22 +456,20 @@ class OrderScreen
 
         if (drinkPrices.containsKey(sizeChoice))
         {
-            System.out.println("What drink would you like?");
-            System.out.println("[1] Coca-Cola");
+            System.out.println(Colors.BRIGHT_GREEN + "What drink would you like?" + Colors.TEXT_RESET);
+            System.out.println(Colors.BRIGHT_WHITE + "[1] Coca-Cola");
             System.out.println("[2] Sprite");
             System.out.println("[3] Barq's");
             System.out.println("[4] Calypso Lemonade");
             System.out.println("[5] Water");
-            System.out.println("[6] Iced Tea");
-            System.out.print("Please enter your choice: ");
+            System.out.println("[6] Iced Tea" + Colors.TEXT_RESET);
+            System.out.print("Please enter your selection here: ");
             int drinkChoice = keyboard.nextInt();
             List<String> drinks = Arrays.asList("Coca-Cola", "Sprite", "Barq's", "Calypso Lemonade", "Water", "Iced Tea");
             createOrder.drinks.add(drinks.get(drinkChoice - 1));
 
             double drinkPrice = drinkPrices.get(sizeChoice);
             createOrder.setDrinkChipTotal(drinkPrice);
-
-
         }
         else
         {
@@ -457,19 +480,19 @@ class OrderScreen
     private void addChips()
     {
         Scanner keyboard = new Scanner(System.in);
-        System.out.println("What chips would you like?");
-        System.out.println("[1] Lay's Classic");
+        System.out.println(Colors.BRIGHT_BLUE + "What chips would you like?" + Colors.TEXT_RESET);
+        System.out.println(Colors.BRIGHT_WHITE + "[1] Lay's Classic");
         System.out.println("[2] Lay's BBQ");
         System.out.println("[3] Lay's Salt & Vinegar");
         System.out.println("[4] Lay's Sour Cream & Onion");
         System.out.println("[5] Sun Chips: Garden Salsa");
-        System.out.println("[6] Hot Cheetos");
-        System.out.print("Please enter your choice: ");
+        System.out.println("[6] Hot Cheetos" + Colors.TEXT_RESET);
+        System.out.print("Please enter your selection here: ");
         int chipChoice = keyboard.nextInt();
 
         double chipPrice = 1.50;
         createOrder.setDrinkChipTotal(chipPrice);
-        System.out.println("Chips added.");
+        System.out.println(Colors.BRIGHT_CYAN + "Chips successfully added!" + Colors.TEXT_RESET);
         List<String> chip = Arrays.asList("Lay's Classic", "Lay's BBQ", "Lay's Salt & Vinegar", "Lay's Sour Cream & Onion", "Sun Chips' Garden Salsa", "Hot Cheetos");
         createOrder.chips.add(chip.get(chipChoice - 1));
     }
@@ -492,7 +515,7 @@ class OrderScreen
     private void checkout() throws IOException
     {
         System.out.println();
-        System.out.println("ORDER DETAILS: ");
+        System.out.println(Colors.BRIGHT_WHITE + "ORDER DETAILS: ");
         System.out.println("-----");
         System.out.println("DRINKS: ");
 
@@ -554,10 +577,10 @@ class OrderScreen
         System.out.println();
         System.out.printf("Total Price: $ %.2f", createOrder.getTotal());
         System.out.println();
-        System.out.println("Order has been confirmed! We appreciate the support!");
+        System.out.println("The order has been confirmed! We appreciate the support!" + Colors.TEXT_RESET);
         Receipts receipt = new Receipts();
         receipt.write(createOrder);
-
+        System.exit(0);
 
     }
 }

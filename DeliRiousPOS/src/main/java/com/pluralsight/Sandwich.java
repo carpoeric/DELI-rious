@@ -217,7 +217,7 @@ public class Sandwich
 
         else
         {
-            builder.append("~ MEATLESS ~");
+            builder.append("NO MEAT");
         }
         return builder.toString();
     }
@@ -235,7 +235,7 @@ public class Sandwich
 
         else
         {
-            builder.append("~ CHEESE-LESS ~");
+            builder.append("NO CHEESE");
         }
         return builder.toString();
     }
@@ -253,7 +253,7 @@ public class Sandwich
 
         else
         {
-            builder.append("~ VEGGIE-LESS ~");
+            builder.append("NO VEGGIES");
         }
         return builder.toString();
     }
@@ -272,7 +272,7 @@ public class Sandwich
 
         else
         {
-            builder.append("~ SAUCE-LESS ~");
+            builder.append("NO SAUCE");
         }
         return builder.toString();
     }
